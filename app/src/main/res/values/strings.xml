@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2023 Sebastiano Barezzi
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string name="app_name">Display Cutout Viewer</string>
+
+    <string name="example_path">M -5,0 L -5,10 L 5,10 L 5,0 Z</string>
+    <string name="apply_path">Apply path</string>
+
+    <string name="invalid_path">Invalid path</string>
+</resources>
