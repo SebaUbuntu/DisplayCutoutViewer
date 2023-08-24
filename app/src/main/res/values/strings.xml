@@ -8,6 +8,7 @@
 
     <string name="example_path">M -5,0 L -5,10 L 5,10 L 5,0 Z</string>
     <string name="apply_path">Apply path</string>
+    <string name="change_color">Change color</string>
 
     <string name="invalid_path">Invalid path</string>
 </resources>

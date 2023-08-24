@@ -7,6 +7,7 @@ package dev.sebaubuntu.displaycutoutviewer
 
 import android.annotation.SuppressLint
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -15,12 +16,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import dev.sebaubuntu.displaycutoutviewer.ext.next
 import dev.sebaubuntu.displaycutoutviewer.ui.PathView
 import dev.sebaubuntu.displaycutoutviewer.utils.CutoutSpecification
 
 class MainActivity : AppCompatActivity() {
     // Views
     private val applyPathButton by lazy { findViewById<Button>(R.id.applyPathButton) }
+    private val changeColorButton by lazy { findViewById<Button>(R.id.changeColorButton) }
     private val pathEditText by lazy { findViewById<EditText>(R.id.pathEditText) }
     private val pathView by lazy { findViewById<PathView>(R.id.pathView) }
 
@@ -51,6 +54,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             pathView.setPath(path)
+        }
+
+        changeColorButton.setOnClickListener {
+            pathView.color = COLORS.next(pathView.color)
         }
     }
 
@@ -86,6 +93,15 @@ class MainActivity : AppCompatActivity() {
         private val CUTOUT_RESOURCE_NAMES = listOf(
             "config_mainBuiltInDisplayCutout",
             "config_mainBuiltInDisplayCutoutRectApproximation",
+        )
+
+        private val COLORS = listOf(
+            null,
+            Color.WHITE,
+            Color.BLACK,
+            Color.RED,
+            Color.GREEN,
+            Color.BLUE,
         )
     }
 }

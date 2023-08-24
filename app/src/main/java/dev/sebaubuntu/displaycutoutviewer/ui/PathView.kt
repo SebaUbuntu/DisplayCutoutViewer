@@ -20,21 +20,19 @@ class PathView @JvmOverloads constructor(
         isAntiAlias = true
         strokeWidth = 2F
         style = Paint.Style.STROKE
-
-        val typedValue = TypedValue()
-        val theme = context.theme
-        theme.resolveAttribute(com.google.android.material.R.attr.colorOnBackground, typedValue, true)
-        val colorData = typedValue.data
-        color = colorData
+        color = defaultColor
     }
 
     private var path: Path? = null
 
-    fun setPath(path: Path) {
-        this.path = path
+    var color: Int? = null
+        set(value) {
+            field = value
 
-        invalidate()
-    }
+            paint.color = value ?: defaultColor
+
+            invalidate()
+        }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -45,4 +43,18 @@ class PathView @JvmOverloads constructor(
             }
         }
     }
+
+    fun setPath(path: Path) {
+        this.path = path
+
+        invalidate()
+    }
+
+    private val defaultColor: Int
+        get() {
+            val typedValue = TypedValue()
+            val theme = context.theme
+            theme.resolveAttribute(com.google.android.material.R.attr.colorOnBackground, typedValue, true)
+            return typedValue.data
+        }
 }
