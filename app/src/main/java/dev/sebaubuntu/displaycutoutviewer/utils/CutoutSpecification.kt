@@ -257,7 +257,7 @@ class CutoutSpecification private constructor(parser: Parser) {
 
         private fun parseSpecWithoutDp(specWithoutDp: String) {
             val region = Region()
-            var sb: StringBuilder? = null
+            var stringBuilder: StringBuilder? = null
             var currentIndex: Int
             var lastIndex = 0
 
@@ -266,8 +266,8 @@ class CutoutSpecification private constructor(parser: Parser) {
                     currentIndex = it
                 } != -1
             ) {
-                if (sb == null) {
-                    sb = StringBuilder(specWithoutDp.length)
+                val sb = stringBuilder ?: StringBuilder(specWithoutDp.length).also {
+                    stringBuilder = it
                 }
 
                 sb.append(specWithoutDp, lastIndex, currentIndex)
@@ -318,7 +318,7 @@ class CutoutSpecification private constructor(parser: Parser) {
                 lastIndex = currentIndex
             }
 
-            sb?.also {
+            stringBuilder?.also {
                 it.append(specWithoutDp, lastIndex, specWithoutDp.length)
                 parseSvgPathSpec(region, it.toString())
             } ?: run {
