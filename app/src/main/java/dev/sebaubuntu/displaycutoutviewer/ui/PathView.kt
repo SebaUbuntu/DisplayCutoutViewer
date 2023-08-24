@@ -14,8 +14,8 @@ import android.util.TypedValue
 import android.view.View
 
 class PathView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : View(context, attrs, defStyleAttr) {
+    context: Context, attrs: AttributeSet? = null
+) : View(context, attrs) {
     private val paint = Paint().apply {
         isAntiAlias = true
         strokeWidth = 2F
